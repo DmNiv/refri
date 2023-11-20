@@ -1,35 +1,24 @@
 package main.refrigeransPostMortem;
-abstract class construcao {
-    protected String nome;
-    protected int num;
-    public construcao(String nome, int num){
-        this.nome = nome;
-        this.num = num;
+abstract class Construcao {
+    public enum Tipo{
+        TEMPLO,
+        CEMITERIO,
+        FABRICA,
+        LOJA
     }
-}
 
-class Templo extends construcao {
-    private String religiao;
-    public Templo(String nome, int num, String religiao){
-        super(nome, num);
-        this.religiao = religiao;
-    }
-    public String getReligiao(){
-        return religiao;
-    }
-    public String toString(){
-        return "Nome: " + this.nome +
-                "\nNumero: " + this.num +
-                "\nReligiao: " + this.religiao;
-    }
-}
+    private Tipo tipo;
+    private int x;
+    private int y;
 
-class Loja extends construcao {
-    public Loja(String nome, int num){
-        super(nome, num);
+    public Construcao(Tipo tipo, int x, int y){
+        this.tipo = tipo;
+        this.x = x;
+        this.y = y;
     }
-    public String toString() {
-        return "Nome: " + this.nome +
-                "\nNumero: " + this.num;
-    }
+
+    abstract void rodar();
+    abstract void destruir();
+
+
 }

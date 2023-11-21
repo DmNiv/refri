@@ -8,6 +8,7 @@ abstract class Construcao {
     }
 
     private Tipo tipo;
+    protected int pessoas;
     private int x;
     private int y;
 
@@ -15,10 +16,17 @@ abstract class Construcao {
         this.tipo = tipo;
         this.x = x;
         this.y = y;
+        this.pessoas = 0;
     }
 
     abstract void rodar();
     abstract void destruir();
-
-
+    void moverPessoas(int x, Construcao y){
+        if (x > pessoas){
+            system.out.println("você não pode trasferir mais pessoas do que há na construção");
+        } else {
+            pessoas = pessoas - x;
+            y.pessoas = y.pessoas + x;
+        }
+    }
 }

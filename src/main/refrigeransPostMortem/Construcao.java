@@ -1,5 +1,5 @@
 package main.refrigeransPostMortem;
-abstract class Construcao {
+public abstract class Construcao {
     public enum Tipo{
         TEMPLO,
         CEMITERIO,
@@ -38,5 +38,8 @@ abstract class Construcao {
             pessoas = pessoas - x;
             y.pessoas = y.pessoas + x;
         }
+    }
+    public void descricao(){
+        System.out.println("Tipo da Construção: " + this.tipo + "\nPosição x da Construção: " + this.x + "\nPosição y da Construção: " + this.y);
     }
 }

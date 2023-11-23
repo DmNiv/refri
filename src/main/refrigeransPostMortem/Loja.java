@@ -5,10 +5,12 @@ class Loja extends Construcao{
         super(Tipo.LOJA, x, y);
     };
 
+    @Override
     void rodar(){
 
     }
 
+    @Override
     void destruir(){
 
     }

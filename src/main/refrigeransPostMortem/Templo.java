@@ -5,10 +5,12 @@ class Templo extends Construcao{
         super(Tipo.TEMPLO, x, y);
     };
 
+    @Override
     void rodar(){
 
     }
 
+    @Override
     void destruir(){
 
     }

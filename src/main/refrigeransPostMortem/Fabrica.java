@@ -5,10 +5,12 @@ class Fabrica extends Construcao{
         super(Tipo.FABRICA, x, y);
     };
 
+    @Override
     void rodar(){
 
     }
 
+    @Override
     void destruir(){
 
     }

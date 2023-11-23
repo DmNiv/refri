@@ -1,17 +1,16 @@
 package main;
 
+
 import main.Engine.*;
+import main.refrigeransPostMortem.Construcao;
 
 import java.io.IOException;
 
 public class  Main{
 
     public static void main(String[] args) throws IOException {
-        Engine engine = new Engine();
-
-        engine.start(new Asteroid());
-
+        Construcao templo = Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, 10, 20);
+        templo.descricao();
     }
-
 
 }

@@ -6,10 +6,12 @@ class Cemiterio extends Construcao{
         super(Tipo.CEMITERIO, x, y);
     };
 
+    @Override
     void rodar(){
 
     }
 
+    @Override
     void destruir(){
 
     }

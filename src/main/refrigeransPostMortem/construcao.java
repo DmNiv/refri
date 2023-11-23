@@ -19,16 +19,21 @@ abstract class Construcao {
         this.pessoas = 0;
     }
 
-    public static Construcao criarConstrucao(){
-
+    public static Construcao criarConstrucao(Tipo tipo, int x, int y){
+        return switch (tipo) {
+            case TEMPLO -> new Templo(x, y);
+            case CEMITERIO -> new Cemiterio(x, y);
+            case FABRICA -> new Fabrica(x, y);
+            case LOJA -> new Loja(x, y);
+            default -> throw new IllegalArgumentException("Tipo de construção desconhecido: " + tipo);
+        };
     }
-
 
     abstract void rodar();
     abstract void destruir();
     void moverPessoas(int x, Construcao y){
         if (x > pessoas){
-            System.out.println("você não pode trasferir mais pessoas do que há na construção");
+            System.out.println("Você não pode transferir mais pessoas do que há na construção.");
         } else {
             pessoas = pessoas - x;
             y.pessoas = y.pessoas + x;

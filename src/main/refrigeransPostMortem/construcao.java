@@ -19,11 +19,16 @@ abstract class Construcao {
         this.pessoas = 0;
     }
 
+    public static Construcao criarConstrucao(){
+
+    }
+
+
     abstract void rodar();
     abstract void destruir();
     void moverPessoas(int x, Construcao y){
         if (x > pessoas){
-            system.out.println("você não pode trasferir mais pessoas do que há na construção");
+            System.out.println("você não pode trasferir mais pessoas do que há na construção");
         } else {
             pessoas = pessoas - x;
             y.pessoas = y.pessoas + x;

@@ -21,6 +21,12 @@ public class  Main{
         Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), 1, 3);
         Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), 7, 2);
         Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), 2, 2);
+        novoJogo.getConstrucao(12, 4).aumentarPessoas(13);
+        novoJogo.getConstrucao(12, 4).descricao();
+        novoJogo.getConstrucao(7, 2).descricao();
+        novoJogo.getConstrucao(12, 4).moverPessoas(3, novoJogo.getConstrucao(7, 2));
+        novoJogo.getConstrucao(12, 4).descricao();
+        novoJogo.getConstrucao(7, 2).descricao();
 
         novoJogo.imprimirMapa();
     }

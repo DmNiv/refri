@@ -4,12 +4,8 @@ import main.refrigeransPostMortem.Construcao;
 public class Jogo {
     private Construcao[][] mapa;
     private String Cor;
-    private int refris;
-    private int fieis;
-    private int coveiros;
-    private int lojistas;
-    private int operarios;
-    private int mortos;
+    public static int refris;
+    public int mortos;
 
     public Jogo(){
         mapa = new Construcao[16][16];

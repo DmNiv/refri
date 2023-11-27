@@ -48,7 +48,7 @@ public abstract class Construcao {
         return tipo;
     }
 
-    void moverPessoas(int x, Construcao y){
+    public void moverPessoas(int x, Construcao y){
         if (x > pessoas){
             System.out.println("Você não pode transferir mais pessoas do que há na construção.");
         } else {
@@ -59,4 +59,9 @@ public abstract class Construcao {
     public void descricao(){
         System.out.println("Tipo da Construção: " + this.tipo + "\nPosição x da Construção: " + this.x + "\nPosição y da Construção: " + this.y + "\nNúmero de pessoas: " + this.pessoas);
     }
+
+    public void aumentarPessoas(int x){
+        pessoas += x;
+    }
+
 }

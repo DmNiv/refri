@@ -32,6 +32,15 @@ public abstract class Construcao {
         return novaConstrucao;
     }
 
+    public String getCor(){
+        return switch (this.tipo) {
+            case LOJA -> "\u001B[32m";
+            case TEMPLO -> "\u001B[33m";
+            case FABRICA -> "\u001B[31m";
+            case CEMITERIO -> "\u001B[35m";
+        };
+    }
+
     abstract void rodar();
     abstract void destruir();
 

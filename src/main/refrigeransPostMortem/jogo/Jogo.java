@@ -6,6 +6,10 @@ public class Jogo {
     private String Cor;
     private int refris;
     private int fieis;
+    private int coveiros;
+    private int lojistas;
+    private int operarios;
+    private int mortos;
 
     public Jogo(){
         mapa = new Construcao[16][16];
@@ -27,14 +31,7 @@ public class Jogo {
             for (int j = 0; j < construcoes.length; j++){
                 Construcao construcao = construcoes[j];
                 if (construcao != null){
-                    if (construcao.getTipo() == Construcao.Tipo.TEMPLO){
-                        Cor = "\u001B[33m";}
-                    if (construcao.getTipo() == Construcao.Tipo.LOJA){
-                        Cor = "\u001B[32m";}
-                    if (construcao.getTipo() == Construcao.Tipo.FABRICA){
-                        Cor = "\u001B[31m";}
-                    if (construcao.getTipo() == Construcao.Tipo.CEMITERIO){
-                        Cor = "\u001B[35m";}
+                    Cor = construcao.getCor();
                     System.out.print("[" + Cor + construcao.getClass().getSimpleName().charAt(0) + "\u001B[0m" + "]");
                 } else{
                     System.out.print("[N]");

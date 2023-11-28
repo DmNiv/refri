@@ -4,11 +4,15 @@ package main;
 import main.Engine.*;
 import main.refrigeransPostMortem.*;
 import main.refrigeransPostMortem.jogo.Jogo;
+import main.refrigeransPostMortem.jogo.Jogador;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.awt.event.KeyEvent;
+import java.util.Scanner;
+
 
 public class  Main{
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Class<?> fabricaClasse = Fabrica.class;
         Class<?> cemiterioClasse = Cemiterio.class;
         Class<?> lojaClasse = Loja.class;
@@ -17,31 +21,34 @@ public class  Main{
         Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
         Method[] metodosLoja = lojaClasse.getDeclaredMethods();
         Method[] metodosTemplo = temploClasse.getDeclaredMethods();
+        Jogo novoJogo = new Jogo(16, 16);
+        Jogador jogador = new Jogador(0, 0);
 
-        Jogo novoJogo = new Jogo();
-        Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), 10, 15);
-        Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), 0, 0);
-        Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, novoJogo.getMapa(), 6, 6);
-        Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), 12, 4);
-        Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), 1, 3);
-        Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), 7, 2);
-        Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), 2, 2);
+        Scanner scanner = new Scanner(System.in);
+        while (true){
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            novoJogo.imprimirMapa(jogador);
+            System.out.println("Posição X: " + jogador.getPosicaoX() + "\nPosição Y: " + jogador.getPosicaoY());
+            if (scanner.hasNext()) {
+                char direcao = scanner.next().charAt(0);
 
-        if (novoJogo.getConstrucao(12, 4) instanceof Fabrica fabrica){
-            fabrica.aumentarPessoas(13);
-        }
-
-        novoJogo.getConstrucao(12, 4).descricao();
-        novoJogo.getConstrucao(7, 2).descricao();
-        novoJogo.getConstrucao(12, 4).moverPessoas(3, novoJogo.getConstrucao(7, 2));
-        novoJogo.getConstrucao(12, 4).descricao();
-        novoJogo.getConstrucao(7, 2).descricao();
-
-        novoJogo.imprimirMapa();
-
-        for (Method metodo : metodosFabrica) {
-            if (metodo.getDeclaringClass() != Object.class) {
-                System.out.println("Método implementado: " + metodo.getName());
+                switch (direcao) {
+                    case 'w':
+                        jogador.moverCima();
+                        break;
+                    case 'a':
+                        jogador.moverEsq();
+                        break;
+                    case 's':
+                        jogador.moverBaixo();
+                        break;
+                    case 'd':
+                        jogador.moverDir();
+                        break;
+                    default:
+                        System.out.println("Tecla inválida. Use W, A, S ou D.");
+                }
             }
         }
 

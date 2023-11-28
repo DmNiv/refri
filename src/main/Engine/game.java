@@ -1,11 +1,11 @@
 package main.Engine;
 
 public interface game {
-    public void init();
+    void init();
 
-    public void update();
+    void update();
 
-    public void end();
+    void end();
 
 
 }

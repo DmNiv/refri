@@ -1,9 +1,9 @@
 package main.Engine;
 
-//public class engine implements Runnable{
-    //public static Keyboard keyboard;
+public class engine implements Runnable{
+    public static Keyboard keyboard;
     //private Game game;
-    //private boolean running;
+    private boolean running;
 
     //public Engine() {
         //keyboard = new Keyboard();
@@ -19,15 +19,13 @@ package main.Engine;
         //thread.start();
     //}
 
-    //@Override
-    //public void run(){
+    @Override
+    public void run(){
 
-        //while (running) {
+        while (running) {
 
-        //}
+        }
     //game.end();
-    //}
+    }
 
-//}
-
-
+}

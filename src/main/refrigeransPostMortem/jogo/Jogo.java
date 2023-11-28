@@ -30,7 +30,7 @@ public class Jogo {
                     Cor = construcao.getCor();
                     System.out.print("[" + Cor + construcao.getClass().getSimpleName().charAt(0) + "\u001B[0m" + "]");
                 } else{
-                    System.out.print("[N]");
+                    System.out.print("[ ]");
                 }
             }
             System.out.println();

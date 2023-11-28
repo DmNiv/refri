@@ -1,5 +1,7 @@
 package main.refrigeransPostMortem;
 public abstract class Construcao {
+
+
     public enum Tipo{
         TEMPLO,
         CEMITERIO,
@@ -19,17 +21,13 @@ public abstract class Construcao {
         this.pessoas = 0;
     }
 
-    public static Construcao criarConstrucao(Tipo tipo, Construcao[][] matriz, int x, int y){
-        Construcao novaConstrucao = switch (tipo) {
-            case TEMPLO -> new Templo(x, y);
-            case CEMITERIO -> new Cemiterio(x, y);
-            case FABRICA -> new Fabrica(x, y);
-            case LOJA -> new Loja(x, y);
-        };
-
-        matriz[x][y] = novaConstrucao;
-
-        return novaConstrucao;
+    public static void criarConstrucao(Tipo tipo, Construcao[][] matriz, int x, int y) {
+        switch (tipo) {
+            case TEMPLO -> matriz[x][y] = new Templo(x, y);
+            case CEMITERIO -> matriz[x][y] = new Cemiterio(x, y);
+            case FABRICA -> matriz[x][y] = new Fabrica(x, y);
+            case LOJA -> matriz[x][y] = new Loja(x, y);
+        }
     }
 
     public String getCor(){
@@ -60,8 +58,5 @@ public abstract class Construcao {
         System.out.println("Tipo da Construção: " + this.tipo + "\nPosição x da Construção: " + this.x + "\nPosição y da Construção: " + this.y + "\nNúmero de pessoas: " + this.pessoas);
     }
 
-    public void aumentarPessoas(int x){
-        pessoas += x;
-    }
 
 }

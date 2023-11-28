@@ -1,6 +1,6 @@
 package main.refrigeransPostMortem;
 
-class Loja extends Construcao{
+public class Loja extends Construcao{
     public Loja(int x, int y){
         super(Tipo.LOJA, x, y);
     };
@@ -14,4 +14,7 @@ class Loja extends Construcao{
     void destruir(){
 
     }
+
+
+
 }

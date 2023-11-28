@@ -2,7 +2,7 @@ package main.refrigeransPostMortem;
 
 import main.refrigeransPostMortem.jogo.Jogo;
 
-class Fabrica extends Construcao{
+public class Fabrica extends Construcao{
     public Fabrica(int x, int y){
         super(Tipo.FABRICA, x, y);
     };
@@ -20,7 +20,9 @@ class Fabrica extends Construcao{
 
     }
 
-
+    public void aumentarPessoas(int x){
+        pessoas += x;
+    }
 
 
 }

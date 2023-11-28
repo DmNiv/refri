@@ -1,6 +1,6 @@
 package main.refrigeransPostMortem;
 
-class Templo extends Construcao{
+public class Templo extends Construcao{
     public Templo(int x, int y){
         super(Tipo.TEMPLO, x, y);
     };

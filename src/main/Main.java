@@ -31,9 +31,9 @@ public class  Main{
             novoJogo.imprimirMapa(jogador);
             System.out.println("Posição X: " + jogador.getPosicaoX() + "\nPosição Y: " + jogador.getPosicaoY());
             if (scanner.hasNext()) {
-                char direcao = scanner.next().charAt(0);
+                char input = scanner.next().charAt(0);
 
-                switch (direcao) {
+                switch (input) {
                     case 'w':
                         jogador.moverCima();
                         break;
@@ -46,8 +46,27 @@ public class  Main{
                     case 'd':
                         jogador.moverDir();
                         break;
+                    case 'c':
+                        System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
+                        input = scanner.next().charAt(0);
+                        switch (input) {
+                            case 'f':
+                                Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                break;
+                            case 'c':
+                                Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                break;
+                            case 'l':
+                                Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                break;
+                            case 't':
+                                Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                break;
+                            default:
+                                System.out.println("Tecla inválida. Use F, C, L ou T.");
+                        }
                     default:
-                        System.out.println("Tecla inválida. Use W, A, S ou D.");
+                        System.out.println("Tecla inválida. Use W, A, S, D ou C.");
                 }
             }
         }

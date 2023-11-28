@@ -37,13 +37,13 @@ public class Jogo {
                 Construcao construcao = mapa[i][j];
                 if (construcao != null){
                     Cor = construcao.getCor();
-                    if (jogador.getPosicaoX() == j && jogador.getPosicaoY() == i){
-                        System.out.print(jogador.getCor() + "[" + Cor + construcao.getClass().getSimpleName().charAt(0) + jogador.getCor() + "]");
+                    if (jogador.getPosicaoX() == i && jogador.getPosicaoY() == j){
+                        System.out.print(jogador.getCor() + "[" + Cor + construcao.getClass().getSimpleName().charAt(0) + jogador.getCor() + "]" + "\u001B[0m");
                     } else {
                         System.out.print("[" + Cor + construcao.getClass().getSimpleName().charAt(0) + "\u001B[0m" + "]");
                     }
                 } else {
-                    if (jogador.getPosicaoX() == j && jogador.getPosicaoY() == i){
+                    if (jogador.getPosicaoX() == i && jogador.getPosicaoY() == j){
                         System.out.print(jogador.getCor() + "[ ]" + "\u001B[0m");
                     } else {
                         System.out.print("[ ]");

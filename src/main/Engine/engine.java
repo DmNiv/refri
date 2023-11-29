@@ -25,7 +25,7 @@ public class engine implements Runnable{
     public void run(){
 
         while (running) {
-
+            game.update();
         }
     game.end();
     }

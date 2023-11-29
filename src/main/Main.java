@@ -1,17 +1,15 @@
 package main;
 
 
-import main.Engine.*;
 import main.refrigeransPostMortem.*;
-import main.refrigeransPostMortem.jogo.Jogo;
-import main.refrigeransPostMortem.jogo.Jogador;
+import main.refrigeransPostMortem.RefrigeransPostMortem;
+import main.refrigeransPostMortem.Jogador;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 
-public class  Main{
+public class Main{
     public static void main(String[] args) throws IOException, InterruptedException {
         Class<?> fabricaClasse = Fabrica.class;
         Class<?> cemiterioClasse = Cemiterio.class;
@@ -21,7 +19,7 @@ public class  Main{
         Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
         Method[] metodosLoja = lojaClasse.getDeclaredMethods();
         Method[] metodosTemplo = temploClasse.getDeclaredMethods();
-        Jogo novoJogo = new Jogo(16, 16);
+        RefrigeransPostMortem novoJogo = new RefrigeransPostMortem(16, 16);
         Jogador jogador = new Jogador(0, 0);
 
         Scanner scanner = new Scanner(System.in);

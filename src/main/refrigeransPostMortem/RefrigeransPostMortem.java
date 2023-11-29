@@ -1,19 +1,34 @@
-package main.refrigeransPostMortem.jogo;
-import main.refrigeransPostMortem.Construcao;
+package main.refrigeransPostMortem;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import main.Engine.Game;
 
-public class Jogo {
+public class RefrigeransPostMortem implements Game{
     private Construcao[][] mapa;
+    private Jogador jogador;
+    public String gameState = "run";
     private int linhas;
     private int colunas;
     private String Cor;
     public static int refris;
     public int mortos;
+    private boolean gameOver = false;
 
-    public Jogo(int i, int j){
-        this.linhas = i;
-        this.colunas = j;
-        mapa = new Construcao[i][j];
+    @Override
+    public void init(){
+        Class<?> fabricaClasse = Fabrica.class;
+        Class<?> cemiterioClasse = Cemiterio.class;
+        Class<?> lojaClasse = Loja.class;
+        Class<?> temploClasse = Templo.class;
+        Method[] metodosFabrica = fabricaClasse.getDeclaredMethods();
+        Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
+        Method[] metodosLoja = lojaClasse.getDeclaredMethods();
+        Method[] metodosTemplo = temploClasse.getDeclaredMethods();
+
+        this.linhas = 16;
+        this.colunas = 16;
+        mapa = new Construcao[linhas][colunas];
+        jogador = new Jogador(0, 0);
     }
     public int getLinhas() {
         return linhas;
@@ -31,7 +46,13 @@ public class Jogo {
         return mapa[i][j];
     }
 
-    public void imprimirMapa(Jogador jogador){
+    @Override
+    public void update(){
+        try {
+            limparTerminal();
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
                 Construcao construcao = mapa[i][j];

@@ -1,4 +1,4 @@
-package main.refrigeransPostMortem.jogo;
+package main.refrigeransPostMortem;
 public class Jogador {
     private int posI;
     private int posJ;

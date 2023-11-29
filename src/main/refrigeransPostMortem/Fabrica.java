@@ -1,7 +1,5 @@
 package main.refrigeransPostMortem;
 
-import main.refrigeransPostMortem.jogo.Jogo;
-
 public class Fabrica extends Construcao{
     public Fabrica(int i, int j){
         super(Tipo.FABRICA, i, j);
@@ -10,7 +8,7 @@ public class Fabrica extends Construcao{
     @Override
     void rodar(){
         for (int n = 0; n < pessoas; n++){
-            Jogo.refris += 1;
+            RefrigeransPostMortem.refris += 1;
         }
 
     }

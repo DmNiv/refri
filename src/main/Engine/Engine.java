@@ -1,13 +1,11 @@
 package main.Engine;
 
-import main.Engine.Keyboard;
-
-public class engine implements Runnable{
+public class Engine implements Runnable{
     public static Keyboard keyboard;
     private Game game;
-    private boolean running;
+    public boolean running;
 
-    public engine() {
+    public Engine() {
         keyboard = new Keyboard();
     }
 
@@ -23,11 +21,8 @@ public class engine implements Runnable{
 
     @Override
     public void run(){
+        game.update();
 
-        while (running) {
-            game.update();
-        }
-    game.end();
     }
 
 }

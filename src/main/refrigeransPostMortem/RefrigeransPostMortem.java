@@ -1,9 +1,12 @@
 package main.refrigeransPostMortem;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import main.Engine.Game;
+import main.Engine.Engine;
 
 public class RefrigeransPostMortem implements Game{
+    public Engine engine;
     private Construcao[][] mapa;
     private Jogador jogador;
     public String gameState = "run";
@@ -48,11 +51,6 @@ public class RefrigeransPostMortem implements Game{
 
     @Override
     public void update(){
-        try {
-            limparTerminal();
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
                 Construcao construcao = mapa[i][j];
@@ -73,6 +71,32 @@ public class RefrigeransPostMortem implements Game{
             }
             System.out.println();
         }
+
+    if (Engine.keyboard.keyDown(KeyEvent.VK_D)) {
+        jogador.moverDir();
+    }
+
+    if (Engine.keyboard.keyDown(KeyEvent.VK_A)) {
+        jogador.moverEsq();
+    }
+
+    if (Engine.keyboard.keyDown(KeyEvent.VK_W)) {
+        jogador.moverCima();
+    }
+    if (Engine.keyboard.keyDown(KeyEvent.VK_S)) {
+        jogador.moverBaixo();
+    }
+
+    if (Engine.keyboard.keyPress(KeyEvent.VK_SPACE)) {
+        engine.running = false;
+    }
+
+
+    }
+
+    @Override
+    public void end() {
+
     }
 
     public void limparTerminal() throws IOException, InterruptedException {

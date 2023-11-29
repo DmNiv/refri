@@ -1,6 +1,7 @@
 package main;
 
 
+import main.Engine.Engine;
 import main.refrigeransPostMortem.*;
 import main.refrigeransPostMortem.RefrigeransPostMortem;
 import main.refrigeransPostMortem.Jogador;
@@ -9,21 +10,15 @@ import java.lang.reflect.Method;
 import java.util.Scanner;
 
 
-public class Main{
+public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Class<?> fabricaClasse = Fabrica.class;
-        Class<?> cemiterioClasse = Cemiterio.class;
-        Class<?> lojaClasse = Loja.class;
-        Class<?> temploClasse = Templo.class;
-        Method[] metodosFabrica = fabricaClasse.getDeclaredMethods();
-        Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
-        Method[] metodosLoja = lojaClasse.getDeclaredMethods();
-        Method[] metodosTemplo = temploClasse.getDeclaredMethods();
-        RefrigeransPostMortem novoJogo = new RefrigeransPostMortem(16, 16);
-        Jogador jogador = new Jogador(0, 0);
+        Engine engine = new Engine();
 
-        Scanner scanner = new Scanner(System.in);
-        while (true){
+        engine.start(new RefrigeransPostMortem());
+    }
+}
+
+        /*while (true){
             System.out.print("\033[H\033[2J");
             System.out.flush();
             novoJogo.imprimirMapa(jogador);

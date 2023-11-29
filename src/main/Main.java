@@ -34,6 +34,9 @@ public class  Main{
                 char input = scanner.next().charAt(0);
 
                 switch (input) {
+                    case 'p':
+                        System.out.println("Saindo...");
+                        System.exit(0);
                     case 'w':
                         jogador.moverCima();
                         break;
@@ -63,10 +66,11 @@ public class  Main{
                                 Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
                                 break;
                             default:
-                                System.out.println("Tecla inválida. Use F, C, L ou T.");
+                                System.out.println("Tecla inválida. \n Use F, C, L ou T.");
                         }
                     default:
-                        System.out.println("Tecla inválida. Use W, A, S, D ou C.");
+                        System.out.println("Tecla inválida.\n Use W, A, S, D para mover \n Use P ou C para outros comandos.");
+
                 }
             }
         }

@@ -1,44 +1,44 @@
 package main.refrigeransPostMortem.jogo;
 public class Jogador {
-    private int posX;
-    private int posY;
+    private int posI;
+    private int posJ;
 
 
-    public Jogador(int x, int y){
-        this.posX = x;
-        this.posY = y;
+    public Jogador(int i, int j){
+        this.posI = i;
+        this.posJ = j;
     }
 
     public String getCor(){
         return "\u001b[32m";
     }
     public void moverDir(){
-        if (posX < 15){
-            posX++;
+        if (posJ < 15){
+            posJ++;
         }
     }
     public void moverEsq(){
-        if (0 < posX){
-            posX--;
+        if (0 < posJ){
+            posJ--;
         }
     }
     public void moverCima(){
-        if (0 < posY){
-            posY--;
+        if (0 < posI){
+            posI--;
         }
     }
     public void moverBaixo(){
-        if (posY < 15){
-            posY++;
+        if (posI < 15){
+            posI++;
         }
     }
 
-    public int getPosicaoX() {
-        return posX;
+    public int getPosicaoI() {
+        return posI;
     }
 
-    public int getPosicaoY() {
-        return posY;
+    public int getPosicaoJ() {
+        return posJ;
     }
 
 }

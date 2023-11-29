@@ -2,8 +2,8 @@ package main.refrigeransPostMortem;
 
 public class Cemiterio extends Construcao{
 
-    public Cemiterio(int x, int y){
-        super(Tipo.CEMITERIO, x, y);
+    public Cemiterio(int i, int j){
+        super(Tipo.CEMITERIO, i, j);
     };
 
     @Override

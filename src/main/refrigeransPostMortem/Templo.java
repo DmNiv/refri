@@ -1,8 +1,8 @@
 package main.refrigeransPostMortem;
 
 public class Templo extends Construcao{
-    public Templo(int x, int y){
-        super(Tipo.TEMPLO, x, y);
+    public Templo(int i, int j){
+        super(Tipo.TEMPLO, i, j);
     };
 
     @Override

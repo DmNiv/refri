@@ -1,8 +1,8 @@
 package main.refrigeransPostMortem;
 
 public class Loja extends Construcao{
-    public Loja(int x, int y){
-        super(Tipo.LOJA, x, y);
+    public Loja(int i, int j){
+        super(Tipo.LOJA, i, j);
     };
 
     @Override

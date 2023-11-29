@@ -29,7 +29,7 @@ public class  Main{
             System.out.print("\033[H\033[2J");
             System.out.flush();
             novoJogo.imprimirMapa(jogador);
-            System.out.println("Posição X: " + jogador.getPosicaoX() + "\nPosição Y: " + jogador.getPosicaoY());
+            System.out.println("Posição I: " + jogador.getPosicaoI() + "\nPosição J: " + jogador.getPosicaoJ());
             if (scanner.hasNext()) {
                 char input = scanner.next().charAt(0);
 
@@ -51,16 +51,16 @@ public class  Main{
                         input = scanner.next().charAt(0);
                         switch (input) {
                             case 'f':
-                                Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
                                 break;
                             case 'c':
-                                Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
                                 break;
                             case 'l':
-                                Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
                                 break;
                             case 't':
-                                Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), jogador.getPosicaoX(), jogador.getPosicaoY());
+                                Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
                                 break;
                             default:
                                 System.out.println("Tecla inválida. Use F, C, L ou T.");

@@ -11,22 +11,22 @@ public abstract class Construcao {
 
     private Tipo tipo;
     protected int pessoas;
-    private int x;
-    private int y;
+    private int i;
+    private int j;
 
-    public Construcao(Tipo tipo, int x, int y){
+    public Construcao(Tipo tipo, int i, int j){
         this.tipo = tipo;
-        this.x = x;
-        this.y = y;
+        this.i = i;
+        this.j = j;
         this.pessoas = 0;
     }
 
-    public static void criarConstrucao(Tipo tipo, Construcao[][] matriz, int x, int y) {
+    public static void criarConstrucao(Tipo tipo, Construcao[][] matriz, int i, int j) {
         switch (tipo) {
-            case TEMPLO -> matriz[x][y] = new Templo(x, y);
-            case CEMITERIO -> matriz[x][y] = new Cemiterio(x, y);
-            case FABRICA -> matriz[x][y] = new Fabrica(x, y);
-            case LOJA -> matriz[x][y] = new Loja(x, y);
+            case TEMPLO -> matriz[i][j] = new Templo(i, j);
+            case CEMITERIO -> matriz[i][j] = new Cemiterio(i, j);
+            case FABRICA -> matriz[i][j] = new Fabrica(i, j);
+            case LOJA -> matriz[i][j] = new Loja(i, j);
         }
     }
 
@@ -55,7 +55,7 @@ public abstract class Construcao {
         }
     }
     public void descricao(){
-        System.out.println("Tipo da Construção: " + this.tipo + "\nPosição x da Construção: " + this.x + "\nPosição y da Construção: " + this.y + "\nNúmero de pessoas: " + this.pessoas);
+        System.out.println("Tipo da Construção: " + this.tipo + "\nPosição I da Construção: " + this.i + "\nPosição J da Construção: " + this.j + "\nNúmero de pessoas: " + this.pessoas);
     }
 
 

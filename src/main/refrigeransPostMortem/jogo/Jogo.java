@@ -4,31 +4,31 @@ import java.io.IOException;
 
 public class Jogo {
     private Construcao[][] mapa;
-    private int tamanhoX;
-    private int tamanhoY;
+    private int linhas;
+    private int colunas;
     private String Cor;
     public static int refris;
     public int mortos;
 
-    public Jogo(int x, int y){
-        this.tamanhoX = x;
-        this.tamanhoY = y;
-        mapa = new Construcao[x][y];
+    public Jogo(int i, int j){
+        this.linhas = i;
+        this.colunas = j;
+        mapa = new Construcao[i][j];
     }
-    public int getTamanhoX() {
-        return tamanhoX;
+    public int getLinhas() {
+        return linhas;
     }
 
-    public int getTamanhoY() {
-        return tamanhoY;
+    public int getColunas() {
+        return colunas;
     }
 
     public Construcao[][] getMapa(){
         return mapa;
     }
 
-    public Construcao getConstrucao(int x, int y){
-        return mapa[x][y];
+    public Construcao getConstrucao(int i, int j){
+        return mapa[i][j];
     }
 
     public void imprimirMapa(Jogador jogador){
@@ -37,13 +37,13 @@ public class Jogo {
                 Construcao construcao = mapa[i][j];
                 if (construcao != null){
                     Cor = construcao.getCor();
-                    if (jogador.getPosicaoX() == i && jogador.getPosicaoY() == j){
+                    if (jogador.getPosicaoI() == i && jogador.getPosicaoJ() == j){
                         System.out.print(jogador.getCor() + "[" + Cor + construcao.getClass().getSimpleName().charAt(0) + jogador.getCor() + "]" + "\u001B[0m");
                     } else {
                         System.out.print("[" + Cor + construcao.getClass().getSimpleName().charAt(0) + "\u001B[0m" + "]");
                     }
                 } else {
-                    if (jogador.getPosicaoX() == i && jogador.getPosicaoY() == j){
+                    if (jogador.getPosicaoI() == i && jogador.getPosicaoJ() == j){
                         System.out.print(jogador.getCor() + "[ ]" + "\u001B[0m");
                     } else {
                         System.out.print("[ ]");

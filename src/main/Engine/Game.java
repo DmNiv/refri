@@ -1,6 +1,6 @@
 package main.Engine;
 
-public interface game {
+public interface Game {
     void init();
 
     void update();

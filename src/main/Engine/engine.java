@@ -1,23 +1,25 @@
 package main.Engine;
 
+import main.Engine.Keyboard;
+
 public class engine implements Runnable{
     public static Keyboard keyboard;
-    //private Game game;
+    private Game game;
     private boolean running;
 
-    //public Engine() {
-        //keyboard = new Keyboard();
-    //}
+    public engine() {
+        keyboard = new Keyboard();
+    }
 
-    //public void start(Game game) {
-        //this.game = game;
+    public void start(Game game) {
+        this.game = game;
 
-        //running = true;
-        //game.init();
+        running = true;
+        game.init();
 
-        //Thread thread = new Thread(this);
-        //thread.start();
-    //}
+        Thread thread = new Thread(this);
+        thread.start();
+    }
 
     @Override
     public void run(){
@@ -25,7 +27,7 @@ public class engine implements Runnable{
         while (running) {
 
         }
-    //game.end();
+    game.end();
     }
 
 }

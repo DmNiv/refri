@@ -41,4 +41,11 @@ public class Jogador {
         return posJ;
     }
 
+public void construir(){
+
+}
+
+
+
+
 }

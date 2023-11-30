@@ -1,7 +1,10 @@
 package main.refrigeransPostMortem.jogo;
+import main.refrigeransPostMortem.Construcao;
+import main.refrigeransPostMortem.jogo.Jogo;
 public class Jogador {
     private int posI;
     private int posJ;
+    private Construcao construcao;
 
 
     public Jogador(int i, int j){
@@ -39,6 +42,13 @@ public class Jogador {
 
     public int getPosicaoJ() {
         return posJ;
+    }
+
+    public boolean espacoDisponivel(Jogo jogo){
+        if (jogo.getConstrucao(getPosicaoI(), getPosicaoJ()) == null){
+            return true;
+        }
+        return false;
     }
 
 public void construir(){

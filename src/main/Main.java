@@ -47,29 +47,7 @@ public class  Main{
                         jogador.moverDir();
                         break;
                     case 'c':
-                        if (jogador.espacoDisponivel(novoJogo)){
-                            System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
-                            input = scanner.next().charAt(0);
-                            switch (input) {
-                                case 'f':
-                                    Construcao.criarConstrucao(Construcao.Tipo.FABRICA, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
-                                    break;
-                                case 'c':
-                                    Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
-                                    break;
-                                case 'l':
-                                    Construcao.criarConstrucao(Construcao.Tipo.LOJA, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
-                                    break;
-                                case 't':
-                                    Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, novoJogo.getMapa(), jogador.getPosicaoI(), jogador.getPosicaoJ());
-                                    break;
-                                default:
-                                    System.out.println("Tecla inválida. \n Use F, C, L ou T.");
-                            }
-                        } else {
-                            novoJogo.getConstrucao(jogador.getPosicaoI(), jogador.getPosicaoJ()).descricao();
-                            break;
-                        }
+                        jogador.construir(novoJogo);
 
                     default:
                         System.out.println("Tecla inválida.\n Use W, A, S, D para mover \n Use P ou C para outros comandos.");

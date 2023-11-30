@@ -1,10 +1,11 @@
 package main.refrigeransPostMortem.jogo;
 import main.refrigeransPostMortem.Construcao;
-import main.refrigeransPostMortem.jogo.Jogo;
+import java.util.Scanner;
+
 public class Jogador {
     private int posI;
     private int posJ;
-    private Construcao construcao;
+    Scanner scanner = new Scanner(System.in);
 
 
     public Jogador(int i, int j){
@@ -51,7 +52,27 @@ public class Jogador {
         return false;
     }
 
-public void construir(){
+public void construir(Jogo jogo){
+    System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
+    if (scanner.hasNext()) {
+        char input = scanner.next().charAt(0);
+        switch (input) {
+            case 'f':
+                Construcao.criarConstrucao(Construcao.Tipo.FABRICA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                break;
+            case 'c':
+                Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                break;
+            case 'l':
+                Construcao.criarConstrucao(Construcao.Tipo.LOJA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                break;
+            case 't':
+                Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                break;
+            default:
+                System.out.println("Tecla inválida. \n Use F, C, L ou T.");
+        }
+    }
 
 }
 

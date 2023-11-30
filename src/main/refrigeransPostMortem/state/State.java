@@ -1,18 +1,18 @@
 package main.refrigeransPostMortem.state;
 
-import main.refrigeransPostMortem.jogo.Jogador;
+import main.refrigeransPostMortem.jogo.*;
 
 
 public abstract class State {
 
-    Jogador jogador;
 
-    State (Jogador jogador){
-        this.jogador = jogador;
+    State (){
+
     }
 
-    public abstract String interact();
-    public abstract String move();
+    public abstract String interact(Jogador jogador, Jogo jogo);
+    public abstract String toString();
+    public abstract String nextState(Jogo jogo);
 
 
 

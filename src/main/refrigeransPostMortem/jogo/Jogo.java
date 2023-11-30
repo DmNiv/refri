@@ -1,26 +1,25 @@
 package main.refrigeransPostMortem.jogo;
 import main.refrigeransPostMortem.Construcao;
-import java.io.IOException;
+import main.refrigeransPostMortem.state.*;
+
 
 public class Jogo {
     private Construcao[][] mapa;
-    private int linhas;
-    private int colunas;
     private String Cor;
     public static int refris;
     public int mortos;
+    private State state;
 
     public Jogo(int i, int j){
-        this.linhas = i;
-        this.colunas = j;
+        state = new constructState();
         mapa = new Construcao[i][j];
     }
-    public int getLinhas() {
-        return linhas;
-    }
 
-    public int getColunas() {
-        return colunas;
+    public void setState(State state){
+        this.state = state;
+    }
+    public State getState(){
+        return state;
     }
 
     public Construcao[][] getMapa(){
@@ -32,6 +31,7 @@ public class Jogo {
     }
 
     public void imprimirMapa(Jogador jogador){
+        System.out.println("Estado do jogo: " + "\u001B[33m" + state.toString());
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
                 Construcao construcao = mapa[i][j];
@@ -54,12 +54,5 @@ public class Jogo {
         }
     }
 
-    public void limparTerminal() throws IOException, InterruptedException {
-        if (System.getProperty("os.name").contains("Windows")) {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        } else {
-            Runtime.getRuntime().exec("clear");
-        }
-    }
 
 }

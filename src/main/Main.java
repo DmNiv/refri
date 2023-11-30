@@ -1,6 +1,5 @@
 package main;
 
-import main.Engine.*;
 import main.refrigeransPostMortem.*;
 import main.refrigeransPostMortem.jogo.Jogo;
 import main.refrigeransPostMortem.jogo.Jogador;
@@ -47,10 +46,14 @@ public class  Main{
                         jogador.moverDir();
                         break;
                     case 'c':
-                        jogador.construir(novoJogo);
-
+                        novoJogo.getState().interact(jogador, novoJogo);
+                        break;
+                    case 'n':
+                        novoJogo.getState().nextState(novoJogo);
+                        System.out.println();
+                        break;
                     default:
-                        System.out.println("Tecla inválida.\n Use W, A, S, D para mover \n Use P ou C para outros comandos.");
+                        System.out.println("Tecla inválida.\nUse W, A, S, D para mover \nUse P ou C para outros comandos.");
                 }
             }
         }

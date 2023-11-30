@@ -53,30 +53,36 @@ public class Jogador {
     }
 
 public void construir(Jogo jogo){
-    System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
-    if (scanner.hasNext()) {
-        char input = scanner.next().charAt(0);
-        switch (input) {
-            case 'f':
-                Construcao.criarConstrucao(Construcao.Tipo.FABRICA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
-                break;
-            case 'c':
-                Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
-                break;
-            case 'l':
-                Construcao.criarConstrucao(Construcao.Tipo.LOJA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
-                break;
-            case 't':
-                Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
-                break;
-            default:
-                System.out.println("Tecla inválida. \n Use F, C, L ou T.");
+    if (espacoDisponivel(jogo)) {
+        System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
+        if (scanner.hasNext()) {
+            char input = scanner.next().charAt(0);
+            switch (input) {
+                case 'f':
+                    Construcao.criarConstrucao(Construcao.Tipo.FABRICA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                    break;
+                case 'c':
+                    Construcao.criarConstrucao(Construcao.Tipo.CEMITERIO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                    break;
+                case 'l':
+                    Construcao.criarConstrucao(Construcao.Tipo.LOJA, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                    break;
+                case 't':
+                    Construcao.criarConstrucao(Construcao.Tipo.TEMPLO, jogo.getMapa(), getPosicaoI(), getPosicaoJ());
+                    break;
+                default:
+                    System.out.println("Tecla inválida. \nUse F, C, L ou T.");
+            }
         }
+    } else {
+        System.out.println("\u001B[31m" + "Posição já ocupada, tente construir em outro lugar\nou passe para o estado de manipulação para interagir com essa célula." + "\u001B[0m");
     }
 
 }
 
-
+public void mostrarDescricao(Jogo jogo){
+        jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).descricao();
+}
 
 
 }

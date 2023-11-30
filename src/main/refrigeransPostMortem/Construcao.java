@@ -55,7 +55,7 @@ public abstract class Construcao {
         }
     }
     public void descricao(){
-        System.out.println("Tipo da Construção: " + this.tipo + "\nPosição I da Construção: " + this.i + "\nPosição J da Construção: " + this.j + "\nNúmero de pessoas: " + this.pessoas);
+        System.out.println("Tipo da Construção: " + this.tipo + "\nNúmero de pessoas: " + this.pessoas);
     }
 
 

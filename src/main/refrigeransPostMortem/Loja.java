@@ -1,4 +1,5 @@
 package main.refrigeransPostMortem;
+import main.refrigeransPostMortem.jogo.Jogo;
 
 public class Loja extends Construcao{
     public Loja(int i, int j){
@@ -6,8 +7,8 @@ public class Loja extends Construcao{
     };
 
     @Override
-    void rodar(){
-
+    public void rodar(Jogo jogo){
+        jogo.aumentarDinheiros();
     }
 
 

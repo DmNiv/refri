@@ -1,4 +1,5 @@
 package main.refrigeransPostMortem;
+import main.refrigeransPostMortem.jogo.Jogo;
 
 public class Cemiterio extends Construcao{
 
@@ -7,8 +8,8 @@ public class Cemiterio extends Construcao{
     };
 
     @Override
-    void rodar(){
-
+    public void rodar(Jogo jogo){
+        jogo.aumentarMortos();
     }
 
 

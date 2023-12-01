@@ -8,17 +8,13 @@ public class Fabrica extends Construcao{
     };
 
     @Override
-    void rodar(){
-        for (int n = 0; n < pessoas; n++){
-            Jogo.refris += 1;
-        }
+    public void rodar(Jogo jogo){
+        //for (int n = 0; n < pessoas; n++){
+            jogo.aumentarRefris();
+        //}
 
     }
 
-
-    public void aumentarPessoas(int x){
-        pessoas += x;
-    }
 
 
 }

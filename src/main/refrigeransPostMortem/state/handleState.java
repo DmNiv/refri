@@ -23,6 +23,7 @@ public class handleState extends State{
     @Override
     public String nextState(Jogo jogo) {
         jogo.setState(new constructState());
+        jogo.proxDia();
         return null;
     }
 

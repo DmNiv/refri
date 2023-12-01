@@ -1,4 +1,7 @@
 package main.refrigeransPostMortem;
+
+import main.refrigeransPostMortem.jogo.Jogo;
+
 public abstract class Construcao {
 
 
@@ -40,7 +43,7 @@ public abstract class Construcao {
         };
     }
 
-    abstract void rodar();
+    public abstract void rodar(Jogo jogo);
 
 
     public Tipo getTipo() {
@@ -55,6 +58,15 @@ public abstract class Construcao {
             y.pessoas = y.pessoas + x;
         }
     }
+
+    public void aumentarPessoas(Jogo jogo, int x){
+        if (x <= jogo.getPessoas()){
+            pessoas += x;
+            jogo.diminuiPessoas(x);
+        }
+
+    }
+
     public void descricao(){
         System.out.println("Tipo da Construção: " + this.tipo + "\nNúmero de pessoas: " + this.pessoas);
     }

@@ -96,38 +96,42 @@ public void construir(Jogo jogo) {
 
     }
 
-    public void mostrarDescricao (Jogo jogo){
-        jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).descricao();
-        Construcao.Tipo construcao = jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).getTipo();
-        switch (construcao){
-            case TEMPLO:
-                for (Method metodo : jogo.metodosTemplo){
-                    if (metodo.getDeclaringClass() != Object.class) {
-                        System.out.println(" - " + metodo.getName());
+    public void mostrarDescricao (Jogo jogo) {
+        if (jogo.getConstrucao(getPosicaoI(), getPosicaoJ()) != null) {
+            jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).descricao();
+            Construcao.Tipo construcao = jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).getTipo();
+            switch (construcao) {
+                case TEMPLO:
+                    for (Method metodo : jogo.metodosTemplo) {
+                        if (metodo.getDeclaringClass() != Object.class) {
+                            System.out.println(" - " + metodo.getName());
+                        }
                     }
-                }
-                break;
-            case CEMITERIO:
-                for (Method metodo : jogo.metodosCemiterio){
-                    if (metodo.getDeclaringClass() != Object.class) {
-                        System.out.println(" - " + metodo.getName());
+                    break;
+                case CEMITERIO:
+                    for (Method metodo : jogo.metodosCemiterio) {
+                        if (metodo.getDeclaringClass() != Object.class) {
+                            System.out.println(" - " + metodo.getName());
+                        }
                     }
-                }
-                break;
-            case LOJA:
-                for (Method metodo : jogo.metodosLoja){
-                    if (metodo.getDeclaringClass() != Object.class) {
-                        System.out.println(" - " + metodo.getName());
+                    break;
+                case LOJA:
+                    for (Method metodo : jogo.metodosLoja) {
+                        if (metodo.getDeclaringClass() != Object.class) {
+                            System.out.println(" - " + metodo.getName());
+                        }
                     }
-                }
-                break;
-            case FABRICA:
-                for (Method metodo : jogo.metodosFabrica){
-                    if (metodo.getDeclaringClass() != Object.class) {
-                        System.out.println(" - " + metodo.getName());
+                    break;
+                case FABRICA:
+                    for (Method metodo : jogo.metodosFabrica) {
+                        if (metodo.getDeclaringClass() != Object.class) {
+                            System.out.println(" - " + metodo.getName());
+                        }
                     }
-                }
-                break;
+                    break;
+            }
+        } else {
+            System.out.println("Posição vazia, interaja com essa célula para construir no Estado de Construção");
         }
     }
 

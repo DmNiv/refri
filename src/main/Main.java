@@ -9,14 +9,6 @@ import java.util.Scanner;
 
 public class  Main{
     public static void main(String[] args) throws IOException, InterruptedException {
-        Class<?> fabricaClasse = Fabrica.class;
-        Class<?> cemiterioClasse = Cemiterio.class;
-        Class<?> lojaClasse = Loja.class;
-        Class<?> temploClasse = Templo.class;
-        Method[] metodosFabrica = fabricaClasse.getDeclaredMethods();
-        Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
-        Method[] metodosLoja = lojaClasse.getDeclaredMethods();
-        Method[] metodosTemplo = temploClasse.getDeclaredMethods();
         Jogo novoJogo = new Jogo(16, 16);
         Jogador jogador = new Jogador(0, 0);
 

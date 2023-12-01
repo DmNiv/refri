@@ -10,10 +10,6 @@ public class Loja extends Construcao{
 
     }
 
-    @Override
-    void destruir(){
-
-    }
 
 
 

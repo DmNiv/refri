@@ -10,8 +10,4 @@ public class Templo extends Construcao{
 
     }
 
-    @Override
-    void destruir(){
-
-    }
 }

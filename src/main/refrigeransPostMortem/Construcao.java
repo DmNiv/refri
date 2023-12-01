@@ -9,6 +9,7 @@ public abstract class Construcao {
         LOJA
     }
 
+
     private Tipo tipo;
     protected int pessoas;
     private int i;
@@ -40,7 +41,7 @@ public abstract class Construcao {
     }
 
     abstract void rodar();
-    abstract void destruir();
+
 
     public Tipo getTipo() {
         return tipo;
@@ -57,6 +58,4 @@ public abstract class Construcao {
     public void descricao(){
         System.out.println("Tipo da Construção: " + this.tipo + "\nNúmero de pessoas: " + this.pessoas);
     }
-
-
 }

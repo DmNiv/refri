@@ -15,10 +15,6 @@ public class Fabrica extends Construcao{
 
     }
 
-    @Override
-    void destruir(){
-
-    }
 
     public void aumentarPessoas(int x){
         pessoas += x;

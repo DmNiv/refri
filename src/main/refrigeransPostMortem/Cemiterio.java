@@ -11,10 +11,6 @@ public class Cemiterio extends Construcao{
 
     }
 
-    @Override
-    void destruir(){
-
-    }
 
 
 }

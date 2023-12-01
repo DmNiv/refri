@@ -1,5 +1,8 @@
 package main.refrigeransPostMortem.jogo;
 import main.refrigeransPostMortem.Construcao;
+import main.refrigeransPostMortem.Templo;
+
+import java.lang.reflect.Method;
 import java.util.Scanner;
 
 public class Jogador {
@@ -52,7 +55,7 @@ public class Jogador {
         return false;
     }
 
-public void construir(Jogo jogo){
+public void construir(Jogo jogo) {
     if (espacoDisponivel(jogo)) {
         System.out.println("Escolha o que construir:\nF: Fábrica\nC: Cemitério\nL: Loja\nT: Templo");
         if (scanner.hasNext()) {
@@ -75,14 +78,58 @@ public void construir(Jogo jogo){
             }
         }
     } else {
-        System.out.println("\u001B[31m" + "Posição já ocupada, tente construir em outro lugar\nou passe para o estado de manipulação para interagir com essa célula." + "\u001B[0m");
+        System.out.println("\u001B[31m" + "Posição já ocupada. Deseja destruir essa construção?\nSim: s\nNão: n" + "\u001B[0m");
+        if (scanner.hasNext()) {
+            char input = scanner.next().charAt(0);
+            switch (input) {
+                case 's':
+                    jogo.removerConstrucao(this);
+                    break;
+                case 'n':
+                    System.out.println("Nesse caso aguarde o Estado de Manipulação para interagir com essa célula.");
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + input);
+            }
+        }
     }
 
-}
+    }
 
-public void mostrarDescricao(Jogo jogo){
+    public void mostrarDescricao (Jogo jogo){
         jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).descricao();
-}
+        Construcao.Tipo construcao = jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).getTipo();
+        switch (construcao){
+            case TEMPLO:
+                for (Method metodo : jogo.metodosTemplo){
+                    if (metodo.getDeclaringClass() != Object.class) {
+                        System.out.println(" - " + metodo.getName());
+                    }
+                }
+                break;
+            case CEMITERIO:
+                for (Method metodo : jogo.metodosCemiterio){
+                    if (metodo.getDeclaringClass() != Object.class) {
+                        System.out.println(" - " + metodo.getName());
+                    }
+                }
+                break;
+            case LOJA:
+                for (Method metodo : jogo.metodosLoja){
+                    if (metodo.getDeclaringClass() != Object.class) {
+                        System.out.println(" - " + metodo.getName());
+                    }
+                }
+                break;
+            case FABRICA:
+                for (Method metodo : jogo.metodosFabrica){
+                    if (metodo.getDeclaringClass() != Object.class) {
+                        System.out.println(" - " + metodo.getName());
+                    }
+                }
+                break;
+        }
+    }
 
 
 }

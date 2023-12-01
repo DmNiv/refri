@@ -1,6 +1,8 @@
 package main.refrigeransPostMortem.jogo;
-import main.refrigeransPostMortem.Construcao;
+import main.refrigeransPostMortem.*;
 import main.refrigeransPostMortem.state.*;
+
+import java.lang.reflect.Method;
 
 
 public class Jogo {
@@ -9,6 +11,14 @@ public class Jogo {
     public static int refris;
     public int mortos;
     private State state;
+    Class<?> fabricaClasse = Fabrica.class;
+    Class<?> cemiterioClasse = Cemiterio.class;
+    Class<?> lojaClasse = Loja.class;
+    Class<?> temploClasse = Templo.class;
+    Method[] metodosFabrica = fabricaClasse.getDeclaredMethods();
+    Method[] metodosCemiterio = cemiterioClasse.getDeclaredMethods();
+    Method[] metodosLoja = lojaClasse.getDeclaredMethods();
+    Method[] metodosTemplo = temploClasse.getDeclaredMethods();
 
     public Jogo(int i, int j){
         state = new constructState();
@@ -30,8 +40,9 @@ public class Jogo {
         return mapa[i][j];
     }
 
+
     public void imprimirMapa(Jogador jogador){
-        System.out.println("Estado do jogo: " + "\u001B[33m" + state.toString());
+        System.out.println("Estado do jogo: " + "\u001B[33m" + state.toString() + "\u001B[0m");
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
                 Construcao construcao = mapa[i][j];
@@ -52,6 +63,11 @@ public class Jogo {
             }
             System.out.println();
         }
+    }
+
+    public void removerConstrucao(Jogador jogador){
+        mapa[jogador.getPosicaoI()][jogador.getPosicaoJ()] = null;
+        System.gc();
     }
 
 

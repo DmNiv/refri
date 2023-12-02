@@ -1,7 +1,7 @@
 package main.refrigeransPostMortem.jogo;
+
 import main.refrigeransPostMortem.*;
 import main.refrigeransPostMortem.state.*;
-
 import java.lang.reflect.Method;
 
 
@@ -32,6 +32,7 @@ public class Jogo {
     public void setState(State state){
         this.state = state;
     }
+
     public State getState(){
         return state;
     }
@@ -44,9 +45,8 @@ public class Jogo {
         return mapa[i][j];
     }
 
-
-
     public void imprimirMapa(Jogador jogador){
+        System.out.println("\n\n▂▃▅▇█▓▒░۩۞۩    † ☨ ✞ ✝ ☥ ☦ ☓ ♁ ☩    ۩۞۩░▒▓█▇▅▃▂\n");
         System.out.println("Estado do jogo: " + "\u001B[33m" + state.toString() + "\u001B[0m");
         System.out.println("Dia: " + dia);
         System.out.println("Pessoas disponíveis: " + pessoas + "\n\nRefrigerantes: " + refris + "\nMortos: " + mortos + "\nDinheiros: " + dinheiros + "\nFieis: " + fieis);
@@ -73,9 +73,11 @@ public class Jogo {
     }
 
     public void removerConstrucao(Jogador jogador){
+        pessoas += mapa[jogador.getPosicaoI()][jogador.getPosicaoJ()].getPessoas();
         mapa[jogador.getPosicaoI()][jogador.getPosicaoJ()] = null;
         System.gc();
     }
+
     public void proxDia(){
         for (int i = 0; i < mapa.length; i++) {
             for (int j = 0; j < mapa[i].length; j++) {
@@ -92,22 +94,24 @@ public class Jogo {
     public void aumentarRefris(){
         refris++;
     }
+
     public void aumentarMortos(){
         mortos++;
     }
+
     public void aumentarDinheiros(){
         dinheiros++;
     }
+
     public void aumentarFieis(){
         fieis++;
     }
+
     public int getPessoas(){
         return pessoas;
     }
+
     public void diminuiPessoas(int n){
         pessoas = pessoas - n;
     }
-
-
-
 }

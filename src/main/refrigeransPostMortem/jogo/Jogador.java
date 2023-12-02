@@ -1,8 +1,6 @@
 package main.refrigeransPostMortem.jogo;
-import main.refrigeransPostMortem.Construcao;
-import main.refrigeransPostMortem.Templo;
 
-import java.lang.reflect.Method;
+import main.refrigeransPostMortem.Construcao;
 import java.util.Scanner;
 
 public class Jogador {
@@ -19,21 +17,25 @@ public class Jogador {
     public String getCor(){
         return "\u001b[32m";
     }
+
     public void moverDir(){
         if (posJ < 15){
             posJ++;
         }
     }
+
     public void moverEsq(){
         if (0 < posJ){
             posJ--;
         }
     }
+
     public void moverCima(){
         if (0 < posI){
             posI--;
         }
     }
+
     public void moverBaixo(){
         if (posI < 15){
             posI++;
@@ -49,10 +51,7 @@ public class Jogador {
     }
 
     public boolean espacoDisponivel(Jogo jogo){
-        if (jogo.getConstrucao(getPosicaoI(), getPosicaoJ()) == null){
-            return true;
-        }
-        return false;
+        return jogo.getConstrucao(getPosicaoI(), getPosicaoJ()) == null;
     }
 
 public void construir(Jogo jogo) {
@@ -93,47 +92,59 @@ public void construir(Jogo jogo) {
             }
         }
     }
+    }
 
+    public void moverPessoas(Jogo jogo) {
+        System.out.println("Informe a posição (linha coluna) da construção para onde deseja mover as pessoas:");
+        if (scanner.hasNextInt()) {
+            int linha = scanner.nextInt();
+            if (scanner.hasNextInt()) {
+                int coluna = scanner.nextInt();
+                Construcao construcaoDestino = jogo.getConstrucao(linha, coluna);
+                if (construcaoDestino != null) {
+                    System.out.println("Quantas pessoas você quer mover dessa construção?");
+                    if (scanner.hasNextInt()) {
+                        int numPessoas = scanner.nextInt();
+                        jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).moverPessoas(numPessoas, construcaoDestino);
+                        System.out.println(numPessoas + " pessoas movidas para a construção na posição (" + linha + ", " + coluna + ").");
+                    } else {
+                        System.out.println("Entrada inválida para o número de pessoas.");
+                    }
+                } else {
+                    System.out.println("Construção de destino não existe.");
+                }
+            } else {
+                System.out.println("Entrada inválida para a coluna.");
+            }
+        } else {
+            System.out.println("Entrada inválida para a linha.");
+        }
     }
 
     public void mostrarDescricao (Jogo jogo) {
         if (jogo.getConstrucao(getPosicaoI(), getPosicaoJ()) != null) {
             jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).descricao();
-            Construcao.Tipo construcao = jogo.getConstrucao(getPosicaoI(), getPosicaoJ()).getTipo();
-            switch (construcao) {
-                case TEMPLO:
-                    for (Method metodo : jogo.metodosTemplo) {
-                        if (metodo.getDeclaringClass() != Object.class) {
-                            System.out.println(" - " + metodo.getName());
+            Construcao construcao = jogo.getConstrucao(getPosicaoI(), getPosicaoJ());
+            System.out.println("Você deseja aumentar ou mover o número de pessoas nessa construção?\n1: Aumentar\n2: Mover\n3: Sair");
+            if (scanner.hasNext()) {
+                char input = scanner.next().charAt(0);
+                switch (input){
+                    case '1':
+                        System.out.println("Quantas pessoas você quer adicionar nessa construção?");
+                        if (scanner.hasNext()) {
+                            int num = Integer.parseInt(scanner.next());
+                            construcao.aumentarPessoas(jogo, num);
                         }
-                    }
-                    break;
-                case CEMITERIO:
-                    for (Method metodo : jogo.metodosCemiterio) {
-                        if (metodo.getDeclaringClass() != Object.class) {
-                            System.out.println(" - " + metodo.getName());
-                        }
-                    }
-                    break;
-                case LOJA:
-                    for (Method metodo : jogo.metodosLoja) {
-                        if (metodo.getDeclaringClass() != Object.class) {
-                            System.out.println(" - " + metodo.getName());
-                        }
-                    }
-                    break;
-                case FABRICA:
-                    for (Method metodo : jogo.metodosFabrica) {
-                        if (metodo.getDeclaringClass() != Object.class) {
-                            System.out.println(" - " + metodo.getName());
-                        }
-                    }
-                    break;
+                        break;
+                    case '2':
+                        moverPessoas(jogo);
+                        break;
+                    case '3':
+                        break;
+                }
             }
         } else {
             System.out.println("Posição vazia, interaja com essa célula para construir no Estado de Construção");
         }
     }
-
-
 }

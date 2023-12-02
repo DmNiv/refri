@@ -3,6 +3,7 @@ package main.refrigeransPostMortem.state;
 import main.refrigeransPostMortem.jogo.Jogador;
 import main.refrigeransPostMortem.jogo.Jogo;
 
+
 public class constructState extends State{
 
     public constructState() {
@@ -25,5 +26,4 @@ public class constructState extends State{
         jogo.setState(new handleState());
         return null;
     }
-
 }

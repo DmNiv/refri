@@ -2,8 +2,8 @@ package main.refrigeransPostMortem;
 
 import main.refrigeransPostMortem.jogo.Jogo;
 
-public abstract class Construcao {
 
+public abstract class Construcao {
 
     public enum Tipo{
         TEMPLO,
@@ -11,7 +11,6 @@ public abstract class Construcao {
         FABRICA,
         LOJA
     }
-
 
     private Tipo tipo;
     protected int pessoas;
@@ -45,11 +44,6 @@ public abstract class Construcao {
 
     public abstract void rodar(Jogo jogo);
 
-
-    public Tipo getTipo() {
-        return tipo;
-    }
-
     public void moverPessoas(int x, Construcao y){
         if (x > pessoas){
             System.out.println("Você não pode transferir mais pessoas do que há na construção.");
@@ -63,8 +57,14 @@ public abstract class Construcao {
         if (x <= jogo.getPessoas()){
             pessoas += x;
             jogo.diminuiPessoas(x);
+        } else {
+            System.out.println("Você não pode adicionar mais pessoas que o disponível nessa construção");
         }
 
+    }
+
+    public int getPessoas(){
+        return pessoas;
     }
 
     public void descricao(){
